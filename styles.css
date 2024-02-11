@@ -16,16 +16,12 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
-section {
-}
-
 #parent {
     display: flex;
     position: relative;
     justify-content: space-between;
     flex-wrap: wrap;
     left: 150px;
-    margin-top: 50px;
 }
 
 #section1 {
@@ -33,7 +29,7 @@ section {
     justify-content: center;
     align-items: center;
     max-width: 300px;
-    transform: translateX(100%);
+    transform: translateX(110%);
 }
 
 #section2 {
@@ -42,7 +38,14 @@ section {
     gap: 20px;
     max-width: 200px;
     margin: auto;
-    transform: translateX(-80%);
+    transform: translateX(20%);
+}
+
+#section3 {
+    max-width: 200px;
+    transform: translateX(-20%);
+    border: 1px solid black;
+    padding: 20px;
 }
 
 .block {
@@ -62,7 +65,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
+    margin-top: 30px;
     flex-direction: column;
     width: 100%;
     position: relative;
