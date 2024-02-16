@@ -68,13 +68,9 @@ let sc = 0, atmpt = 3;
 //making div as button
 const button = document.getElementsByClassName('block');
 console.log(button);
-for(let i=0; i<button.length; i++){
-    button[i].addEventListener('click', () => {
-        if(atmpt > 0){
-            const computedStyle = getComputedStyle(button[i]);  // console.log(computedStyle); //returns all the CSS applied to the object
-            const bg = computedStyle.backgroundColor;           // console.log(bg); //returns backgroundColor value only
-        
-            const e = document.getElementById('ans');
+
+const checkAnswer = (bg) => {
+    const e = document.getElementById('ans');
             if(bg === randomColor){
                 e.innerText = 'Correct answer';
                 e.style.color = 'green';
@@ -123,9 +119,42 @@ for(let i=0; i<button.length; i++){
                     }
                 }
             }
+}
+
+//Function for, when clicked using mouse
+for(let i=0; i<button.length; i++){
+    button[i].addEventListener('click', () => {
+        if(atmpt > 0){
+            const computedStyle = getComputedStyle(button[i]);  // console.log(computedStyle); //returns all the CSS applied to the object
+            const bg = computedStyle.backgroundColor;           // console.log(bg); //returns backgroundColor value only
+        
+            checkAnswer(bg);
         }
     });
 }
+
+
+
+//Function for, when clicked using keys
+document.addEventListener('keypress', (event) => {
+    // debugger;
+    const key = event.key;
+    const keyAsNum = parseInt(key);
+    if(isNaN(keyAsNum)) return;
+    if(keyAsNum > 6 || keyAsNum <= 0)   return;
+
+    //key[1-6]
+    const el = document.querySelector(`#section2 :nth-child(${keyAsNum})`);
+    if(atmpt > 0) {
+        // const computedStyle = getComputedStyle(el);
+        // const bg = computedStyle.backgroundColor;
+        // console.log('key ', keyAsNum);
+        // console.log('bg ', bg);
+        if(el) {
+            el.click();
+        }
+    }
+})
 
 
 const restart = document.getElementById('restart');
