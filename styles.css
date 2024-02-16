@@ -47,7 +47,7 @@ body {
     max-width: 200px;
     transform: translateX(-20%);
     border: 1px solid black;
-    padding: 20px;
+    padding: 0px 20px;
 }
 
 .block {
@@ -67,7 +67,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 50px;
     flex-direction: column;
     width: 100%;
     position: relative;

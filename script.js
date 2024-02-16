@@ -95,7 +95,7 @@ const checkAnswer = (bg) => {
                 e.innerText = 'Incorrect answer';
                 e.style.color = 'red';
                 atmpt--;
-                console.log("Attempts: ", atmpt);
+                // console.log("Attempts: ", atmpt);
 
                 //code to decrease the attempts remaining when wrong option is selected
                 const a = document.getElementById('at');
@@ -111,6 +111,7 @@ const checkAnswer = (bg) => {
                     if(!x){
                         const btn = document.createElement('div');
                         btn.setAttribute('class', 'btn1');
+                        btn.setAttribute('id', 'try');
                         btn.innerText = 'Try Again';
                         ft.insertBefore(btn, ft.children[1]);
                         const restart = document.getElementById('restart');
@@ -121,7 +122,7 @@ const checkAnswer = (bg) => {
             }
 }
 
-//Function for, when clicked using mouse
+//Function for, when color blocks clicked using mouse
 for(let i=0; i<button.length; i++){
     button[i].addEventListener('click', () => {
         if(atmpt > 0){
@@ -135,10 +136,22 @@ for(let i=0; i<button.length; i++){
 
 
 
-//Function for, when clicked using keys
+//Function for, when color blocks clicked using keys
 document.addEventListener('keypress', (event) => {
     // debugger;
     const key = event.key;
+
+    if(key === 'r'){
+        // console.log('r pressed');
+        document.getElementById('restart').click();
+    }
+
+    if(key === 't'){
+        // console.log('t pressed');
+        const b = document.getElementById('try');
+        if(b !== null) b.click();
+    }
+
     const keyAsNum = parseInt(key);
     if(isNaN(keyAsNum)) return;
     if(keyAsNum > 6 || keyAsNum <= 0)   return;
@@ -146,10 +159,6 @@ document.addEventListener('keypress', (event) => {
     //key[1-6]
     const el = document.querySelector(`#section2 :nth-child(${keyAsNum})`);
     if(atmpt > 0) {
-        // const computedStyle = getComputedStyle(el);
-        // const bg = computedStyle.backgroundColor;
-        // console.log('key ', keyAsNum);
-        // console.log('bg ', bg);
         if(el) {
             el.click();
         }
